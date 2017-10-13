@@ -138,14 +138,14 @@ public class Robot extends IterativeRobot {
 			double autonSpeedLeft = 0.3;
 			
 			
-			double autonTurnLeftL = 0.15;
-			double autonTurnLeftR = -0.15;
+			double autonTurnLeftL = 0.215;
+			double autonTurnLeftR = -0.215;
 			
 			double autonSpeedLeft2 = 0.3;
 			
 			double autonTime1L = 2.3;
 			double autonTime2L = 3.3;
-			double autonTime3L = 4.8;
+			double autonTime3L = 5;
 			
 			if (autonTime.get() < autonTime1L){
 				bastion.DriveL(autonSpeedLeft);

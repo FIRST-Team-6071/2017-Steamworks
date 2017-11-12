@@ -1,6 +1,8 @@
 /**
  * @author Zachary Seebeck FRC Team 6071
- * @version 0.6
+
+ * @version 0.9
+
  * 
  */
 package org.usfirst.frc.team6071.Bastion;
@@ -62,6 +64,8 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Auto choices", chooser);
 		
 		System.out.println("Bastion is alive! Be careful.");
+		System.out.println("Version 0.9");
+
 		bastion.SetMotors(frontLeft, frontRight, backLeft, backRight);
 		maxSpeedMulti.StartTimer();
 		
@@ -71,7 +75,7 @@ public class Robot extends IterativeRobot {
 	/* 
 	 * 
 	 * Not sure what @Override means/does. Haven't had the time to 
-	 * look into it so I though that I would just leave it beacuse
+	 * look into it so I though that I would just leave it because
 	 * it was in there with the base code in WPILib.
 	 */
 	@Override
@@ -80,11 +84,11 @@ public class Robot extends IterativeRobot {
 		autoSelected = chooser.getSelected();
 		}
 		catch (Exception NullPointerException) {
-			System.out.println("RIP AUTO");
+			System.out.println("AUTO HAS FAILED. NullPointerException! Check what you have selected...");
 		}
 		finally {
 			// autoSelected = autoCenter;
-			System.out.println("RIP AUTO x2");
+			System.out.println("Ran the Finally statement for auto.");
 		}
 		// autoSelected = SmartDashboard.getString("Auto Selector", autoCenter);
 		System.out.println("Auton selected " + autoSelected);
@@ -136,54 +140,42 @@ public class Robot extends IterativeRobot {
 		case autoLeft:
 			
 			double autonSpeedLeft = 0.3;
-			
-			
-			double autonTurnLeftL = 0.15;
-			double autonTurnLeftR = -0.15;
-			
+
+			double autonTurnLeftL = 0.23;
+			double autonTurnLeftR = -0.23;
 			double autonSpeedLeft2 = 0.3;
-			
 			double autonTime1L = 2.3;
 			double autonTime2L = 3.3;
-			double autonTime3L = 4.8;
+			double autonTime3L = 5;
+
 			
 			if (autonTime.get() < autonTime1L){
 				bastion.DriveL(autonSpeedLeft);
 				bastion.DriveR(-autonSpeedLeft);
-				System.out.println("Step One");
 				return;
 			}
 			if (autonTime.get() < autonTime2L){
 				bastion.DriveL(autonTurnLeftL);
 				bastion.DriveR(-autonTurnLeftR);
-				System.out.println("Step Two");
 				return;
 			}
 			if (autonTime.get() < autonTime3L) {
 				bastion.DriveL(autonSpeedLeft2);
 				bastion.DriveR(-autonSpeedLeft2);
-				System.out.println("Step Three");
-				
 			}
 			else {
 				bastion.Stop();
 			}
-			
-			
-			
-			
+
 			return;
 			
 		case autoRight:
 			
 			double autonSpeedRight = 0.3;
-			
-			
-			double autonTurnRightL = -0.15;
-			double autonTurnRightR = 0.15;
-			
+			double autonTurnRightL = -0.24;
+			double autonTurnRightR = 0.24;
 			double autonSpeedRight2 = 0.3;
-			
+
 			double autonTime1R = 2.3;
 			double autonTime2R = 3.3;
 			double autonTime3R = 4.8;
@@ -191,41 +183,22 @@ public class Robot extends IterativeRobot {
 			if (autonTime.get() < autonTime1R){
 				bastion.DriveL(autonSpeedRight);
 				bastion.DriveR(-autonSpeedRight);
-				System.out.println("Step One");
 				return;
 			}
 			if (autonTime.get() < autonTime2R){
 				bastion.DriveL(autonTurnRightL);
 				bastion.DriveR(-autonTurnRightR);
-				System.out.println("Step Two");
 				return;
 			}
 			if (autonTime.get() < autonTime3R) {
 				bastion.DriveL(autonSpeedRight2);
 				bastion.DriveR(-autonSpeedRight2);
-				System.out.println("Step Three");
-				
 			}
 			else {
 				bastion.Stop();
 			}
-			
-			
-			
-			
 			return;
-			
-		
-		
 		}
-		
-		/*
-		System.out.println("Autonomous not set up!");
-		
-		
-		*/
-		
-
 	}
 
 	@Override
@@ -241,18 +214,20 @@ public class Robot extends IterativeRobot {
 		
 		if (joystickLeft.getRawButton(1) || joystickRight.getRawButton(1)) {  climber.set(-1); }
 		else climber.set(0);
+		/*
+				DEPLOY WITHOUT REMOVING THIS. Then  if it still works, remove this code from the final.
 		
 		/*
 		 * Adjusts sencitivity of your joystick.
-		 */
+		 *
+
 		int rightPOV = joystickRight.getPOV(0);
 		boolean rightOne = joystickRight.getRawButton(5);
 		if (rightPOV == 0) { maxSpeedMulti.RaiseMultiplier(); }
 		if (rightPOV == 180) { maxSpeedMulti.LowerMultiplier();}
 		// Reset the sencitivity to one.
 		if (rightOne) { maxSpeedMulti.ResetMultiplier(); }
-		
-		
+		*/
 		
 	}
 
@@ -274,5 +249,6 @@ public class Robot extends IterativeRobot {
 	}
 	
 	
+
 }
 

@@ -69,7 +69,7 @@ public class Robot extends IterativeRobot {
 		bastion.SetMotors(frontLeft, frontRight, backLeft, backRight);
 		maxSpeedMulti.StartTimer();
 		
-		
+		System.out.println("Testing.");
 	}
 
 	/* 

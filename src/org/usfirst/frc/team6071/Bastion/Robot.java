@@ -69,7 +69,7 @@ public class Robot extends IterativeRobot {
 		bastion.SetMotors(frontLeft, frontRight, backLeft, backRight);
 		maxSpeedMulti.StartTimer();
 		
-		
+		System.out.println("Testing.");
 	}
 
 	/* 
@@ -209,8 +209,28 @@ public class Robot extends IterativeRobot {
 	
 	@Override
 	public void teleopPeriodic() {
-		bastion.DriveL(-joystickLeft.getRawAxis(1));
-		bastion.DriveR(joystickRight.getRawAxis(1));
+		double leftJoy =  joystickLeft.getRawAxis(1);
+		double rightJoy = joystickRight.getRawAxis(1);
+		
+		double speedDriveL = 0;
+		double speedDriveR = 0;
+		
+		if (leftJoy < 0) {
+			speedDriveL = leftJoy * leftJoy * -1;
+		}
+		if (leftJoy >= 0) {
+			speedDriveL = leftJoy * leftJoy;
+		}
+		
+		if (rightJoy < 0) {
+			speedDriveR = rightJoy * rightJoy * -1;
+		}
+		if (rightJoy >= 0) {
+			speedDriveR = rightJoy * rightJoy;
+		}
+		
+		bastion.DriveL(-leftJoy);
+		bastion.DriveR(rightJoy);
 		
 		if (joystickLeft.getRawButton(1) || joystickRight.getRawButton(1)) {  climber.set(-1); }
 		else climber.set(0);

@@ -1,6 +1,8 @@
 /**
  * @author Zachary Seebeck FRC Team 6071
+
  * @version 0.9
+
  * 
  */
 package org.usfirst.frc.team6071.Bastion;
@@ -63,6 +65,7 @@ public class Robot extends IterativeRobot {
 		
 		System.out.println("Bastion is alive! Be careful.");
 		System.out.println("Version 0.9");
+
 		bastion.SetMotors(frontLeft, frontRight, backLeft, backRight);
 		maxSpeedMulti.StartTimer();
 		
@@ -137,12 +140,14 @@ public class Robot extends IterativeRobot {
 		case autoLeft:
 			
 			double autonSpeedLeft = 0.3;
+
 			double autonTurnLeftL = 0.23;
 			double autonTurnLeftR = -0.23;
 			double autonSpeedLeft2 = 0.3;
 			double autonTime1L = 2.3;
 			double autonTime2L = 3.3;
 			double autonTime3L = 5;
+
 			
 			if (autonTime.get() < autonTime1L){
 				bastion.DriveL(autonSpeedLeft);
@@ -161,6 +166,7 @@ public class Robot extends IterativeRobot {
 			else {
 				bastion.Stop();
 			}
+
 			return;
 			
 		case autoRight:
@@ -169,6 +175,7 @@ public class Robot extends IterativeRobot {
 			double autonTurnRightL = -0.24;
 			double autonTurnRightR = 0.24;
 			double autonSpeedRight2 = 0.3;
+
 			double autonTime1R = 2.3;
 			double autonTime2R = 3.3;
 			double autonTime3R = 4.8;
@@ -233,14 +240,35 @@ public class Robot extends IterativeRobot {
 		/*
 		 * Adjusts sencitivity of your joystick.
 		 *
+
 		int rightPOV = joystickRight.getPOV(0);
 		boolean rightOne = joystickRight.getRawButton(5);
 		if (rightPOV == 0) { maxSpeedMulti.RaiseMultiplier(); }
 		if (rightPOV == 180) { maxSpeedMulti.LowerMultiplier();}
 		// Reset the sencitivity to one.
 		if (rightOne) { maxSpeedMulti.ResetMultiplier(); }
-		
 		*/
-	}	
+		
+	}
+
+	@Override
+	public void testPeriodic() {
+	}
+	
+	@Override
+	public void disabledPeriodic() {
+	}
+	
+	@Override
+	public void disabledInit() {
+	}
+	
+	@Override
+	public void robotPeriodic() {
+		
+	}
+	
+	
+
 }
 
